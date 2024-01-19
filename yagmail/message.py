@@ -132,10 +132,9 @@ def prepare_message(
                 elif content_object["sub_type"] not in ["html", "plain"]:
                     msg.attach(content_object["mime_object"])
                 else:
-                    if not content_object["is_marked_up"]:
-                        content_string = content_string.replace("\n", "<br>")
                     try:
-                        htmlstr += "<div>{0}</div>".format(content_string)
+                        htmlstr+=content_string
+                        # htmlstr += "<div>{0}</div>".format(content_string)
                         if PY3 and prettify_html:
                             import premailer
 
